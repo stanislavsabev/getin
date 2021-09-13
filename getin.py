@@ -91,8 +91,13 @@ def unlock_vba(file_name: str) -> bool:
 
 
 def find_and_replace(pw: str, vba_project: bytes) -> bytes:
-    pass
-
+    start = vba_project.find(b'\x44\x50\x42\x3D\x22') + 5 # find DPB="
+    end = start + vba_project[start:].find(b'\x22')       # find next "
+    password = pw
+    if end - start > len(pw):
+        password = pw + b'0' * (end - start - len(pw))
+    vba_project = vba_project.replace(vba_project[start : end], password)
+    return vba_project
 
 def get_unlock_filename(file_name: str) -> str:
     path = os.path.dirname(file_name)
