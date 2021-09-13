@@ -10,7 +10,8 @@ from typing import List, Optional
 
 
 class this:
-    known = b'0F0DA38BE78F04AC04ACFB5405ACB7F3C2613696189B7A52D119BCA91EC8FDBE9E59AEA82B9A46'
+    # Known password: 0
+    known_pw = b'0F0DA38BE78F04AC04ACFB5405ACB7F3C2613696189B7A52D119BCA91EC8FDBE9E59AEA82B9A46'
     msaccess_ext = ['.mdb', '.accdb']
     inplace = False
 
@@ -69,7 +70,7 @@ def unlock_vba(file_name: str) -> bool:
         return False
 
     try:
-        vba_project = find_and_replace(this.known, vba_project)
+        vba_project = find_and_replace(this.known_pw, vba_project)
         unlock_file_name = get_unlock_filename(file_name)
 
         _, ext = os.path.splitext(file_name)
