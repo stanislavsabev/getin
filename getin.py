@@ -97,8 +97,9 @@ def find_and_replace(pw: str, vba_project: bytes) -> bytes:
     password = pw
     if end - start > len(pw):
         password = pw + b'0' * (end - start - len(pw))
-    vba_project = vba_project.replace(vba_project[start : end], password)
+    vba_project = vba_project.replace(vba_project[start: end], password)
     return vba_project
+
 
 def get_unlock_filename(file_name: str) -> str:
     path = os.path.dirname(file_name)
@@ -140,10 +141,10 @@ def parse_args() -> argparse.Namespace:
         description="Python module to replace the password in VBA project")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument('-f', '--files',
-                       help='file list <file1 file2 ...>', 
+                       help='file list <file1 file2 ...>',
                        nargs='+')
     group.add_argument('-e', '--extensions',
-                       help='extensions list <xlsm  .mdb accdb ...> (with or without .)', 
+                       help='extensions list <xlsm  .mdb accdb ...> (with or without .)',
                        nargs='+')
     group.add_argument('-r', '--regex',
                        help='regex pattern')
@@ -158,8 +159,9 @@ def main():
     args = parse_args()
     file_list = get_filelist(args)
     if not file_list:
-        raise FileNotFoundError('Could not find file(s) that match the citeria.')
-    
+        raise FileNotFoundError(
+            'Could not find file(s) that match the citeria.')
+
     if args.inplace:
         this.inplace = True
     failed: List[str] = []
