@@ -148,7 +148,7 @@ def parse_args() -> argparse.Namespace:
     group.add_argument('-r', '--regex',
                        help='regex pattern')
     parser.add_argument('-i', '--inplace',
-                        help='Optional: update(s) files in place',
+                        help='Optional: updates file(s) in place',
                         action='store_true')
     args = parser.parse_args()
     return args
