@@ -1,1 +1,1 @@
-Python module to replace the password in VBA project
+Python module to replace the password in a VBA project
