@@ -1,5 +1,5 @@
 
-## Replace the password in a VBA project
+## Replace the password in a VBA project using python
 
 usage: getin.py [-h] (-f FILES [FILES ...] | -e EXTENSIONS [EXTENSIONS ...] | -r REGEX) [-i]
 
